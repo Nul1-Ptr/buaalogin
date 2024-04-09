@@ -39,5 +39,6 @@ jobs:
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3   
         with:
+          name: buaalogin-mipsle
           path: |
-              ./*
+              ./buaalogin
