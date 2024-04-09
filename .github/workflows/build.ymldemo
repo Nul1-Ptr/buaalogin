@@ -1,4 +1,4 @@
-name: 编译iperf3
+name: 编译buaalogin
 
 on:
   schedule:
@@ -8,24 +8,12 @@ env:
   TZ: Asia/Shanghai
 
 jobs:
-  check:
+  nim-init:
     runs-on: ubuntu-latest
-    outputs:
-      ver: ${{ steps.getversion.outputs.ver }}
-      cver: ${{ steps.getversion.outputs.cver }}
-    steps:
-      -
-        name: 检查更新
-        id: getversion
-        run: |
-          ver=`curl https://api.github.com/repos/esnet/iperf/releases/latest | jq -r '.tag_name'`
-          cver=`curl https://api.github.com/repos/lmq8267/iperf3/releases/latest | jq -r '.tag_name'`
-          echo "ver=${ver}" >> $GITHUB_OUTPUT
-          echo "cver=${cver}" >> $GITHUB_OUTPUT
 
   build:
     runs-on: ubuntu-latest
-    needs: check
+    needs: nim-init
     if: ${{ needs.check.outputs.ver != needs.check.outputs.cver }}
     steps:
       -
