@@ -15,9 +15,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Nim Compiler
-        uses: nim-lang/setup-nim-action@v1
+        uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: '2.0.10'  # 修改为你需要的 Nim 版本
+          nim-version: '2.0.0' # default is 'stable'
 
       - name: Setup OpenWRT Toolchain
         run: |
