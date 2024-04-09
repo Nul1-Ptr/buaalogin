@@ -29,9 +29,9 @@ jobs:
 
       - name: Configure Nim for Cross Compilation
         run: |
-          echo "mipsel.linux.gcc.path = \"$HOME/openwrt/openwrt-toolchain-22.03.5-ramips-mt7621_gcc-11.2.0_musl.Linux-x86_64/toolchain-mipsel_24kc_gcc-11.2.0_musl/bin\"" >> src/nim.cfg
-          echo "mipsel.linux.gcc.exe = \"mipsel-openwrt-linux-gcc\"" >> src/nim.cfg
-          echo "mipsel.linux.gcc.linkerexe = \"mipsel-openwrt-linux-gcc\"" >> src/nim.cfg
+          echo "mipsel.linux.gcc.path = \"$HOME/openwrt/openwrt-toolchain-22.03.5-ramips-mt7621_gcc-11.2.0_musl.Linux-x86_64/toolchain-mipsel_24kc_gcc-11.2.0_musl/bin\"" >> ./src/nim.cfg
+          echo "mipsel.linux.gcc.exe = \"mipsel-openwrt-linux-gcc\"" >> ./src/nim.cfg
+          echo "mipsel.linux.gcc.linkerexe = \"mipsel-openwrt-linux-gcc\"" >> ./src/nim.cfg
 
       - name: Compile buaalogin
         run: nimble build -y
@@ -40,6 +40,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
+        with:
+            limit-access-to-actor: true
 
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3   
