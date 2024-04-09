@@ -33,15 +33,15 @@ jobs:
           echo "mipsel.linux.gcc.exe = \"mipsel-openwrt-linux-gcc\"" >> ./src/nim.cfg
           echo "mipsel.linux.gcc.linkerexe = \"mipsel-openwrt-linux-gcc\"" >> ./src/nim.cfg
 
-      - name: Compile buaalogin
-        run: nimble build -y
-
       - name: CI
         uses: actions/checkout@v3
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         with:
             limit-access-to-actor: true
+
+      - name: Compile buaalogin
+        run: nimble build -y
 
       - name: Upload files to Artifacts
         uses: actions/upload-artifact@v3   
