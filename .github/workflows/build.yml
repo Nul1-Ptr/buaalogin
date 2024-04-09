@@ -37,7 +37,7 @@ jobs:
         run: nimble build -y
 
       - name: CI
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
 
